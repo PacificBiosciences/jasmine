@@ -46,16 +46,16 @@ the discrete integers 0 to 255 inclusively. The probability range corresponding
 to an integer N is `N/256` to `(N + 1)/256`.
 
 ## Run Time
-*jasmine* scales nearly linear in the number of threads, achieving 2 GBases HiFi per minute on
-16 cores. Memory footprint is very low with ~20 MB per thread.
+*jasmine* scales nearly linear in the number of threads, achieving ~2 GBases HiFi per minute on
+16 cores. Memory footprint is very low with <100 MB per thread.
 
     $ jasmine movie.hifi_reads.bam out.bam -j 16 --log-level INFO
-    Reads      : 100000
-    Yield      : 1.8 GBases
-    Throughput : 2.0 GBases/min
-    Run Time   : 54s 904ms
-    CPU Time   : 16m 52s
-    Peak RSS   : 0.313 GB
+    Reads      : 685700
+    Yield      : 12.5 GBases
+    Throughput : 1.8 GBases/min
+    Run Time   : 6m 46s
+    CPU Time   : 1h 58m
+    Peak RSS   : 1.096 GB
 
 ## Training datasets
 HiFi reads and subreads for true negative and true positive CpG methylation sites are available at https://downloads.pacbcloud.com/public/Sequel-II-CpG-training/.
