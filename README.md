@@ -10,7 +10,7 @@ strands. The output is reported in the forward direction with respect to the HiF
 read sequence.
 
 ## Availability
-Latest version can be installed via bioconda package `jasmine`.
+Latest version can be installed via bioconda package `pbjasmine`.
 
 Please refer to our [official pbbioconda page](https://github.com/PacificBiosciences/pbbioconda)
 for information on Installation, Support, License, Copyright, and Disclaimer.
