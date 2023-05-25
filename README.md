@@ -67,3 +67,4 @@ The true negatives are from HG002 Whole Genome Amplification (WGA).  The true po
 
  * **2.0.0**
    * Initial release that supports Sequel II and Revio
+   * Support for single-strand consensus reads
