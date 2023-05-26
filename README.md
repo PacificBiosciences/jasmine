@@ -5,9 +5,9 @@
 ***
 
 *Jasmine* predicts 5-Methylcytosine (5mC) of each CpG in PacBio HiFi reads, using
-a Convolutional Neural Network. Methylation is assumed to be symmetric between
-strands. The output is reported in the forward direction with respect to the HiFi
-read sequence.
+a Convolutional Neural Network.  The *Jasmine* model supports the Sequel II and 
+Revio systems.  Methylation is assumed to be symmetric between strands. The output
+is reported in the forward direction with respect to the HiFi read sequence.
 
 ## Availability
 Latest version can be installed via bioconda package `pbjasmine`.
