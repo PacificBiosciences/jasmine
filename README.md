@@ -4,16 +4,18 @@
 
 ***
 
-*Jasmine* predicts 5-Methylcytosine (5mC) of each CpG in PacBio HiFi reads, using
-a Convolutional Neural Network.  The *Jasmine* model supports the Sequel II and 
-Revio systems.  Methylation is assumed to be symmetric between strands. The output
-is reported in the forward direction with respect to the HiFi read sequence.
+*Jasmine* predicts 5-Methylcytosine (5mC) of each CpG in PacBio HiFi reads,
+using a Convolutional Neural Network. The *jasmine* model supports the Sequel II
+and Revio systems. Methylation is assumed to be symmetric between strands. The
+output is reported in the forward direction with respect to the HiFi read
+sequence.
 
 ## Availability
 Latest version can be installed via bioconda package `pbjasmine`.
 
-Please refer to our [official pbbioconda page](https://github.com/PacificBiosciences/pbbioconda)
-for information on Installation, Support, License, Copyright, and Disclaimer.
+Please refer to our [official pbbioconda
+page](https://github.com/PacificBiosciences/pbbioconda) for information on
+Installation, Support, License, Copyright, and Disclaimer.
 
 ## Latest Version
 Version **2.0.0**: [Full changelog here](#changelog)
@@ -27,14 +29,21 @@ with kinetics on the command-line, more info on [ccs.how](https://ccs.how/):
 Alternatively, you can use *SMRT Link* on your HPC or define it directly in *Run
 Design* for SQIIe instruments.
 
+*Jasmine* supports [`ccs --by-strand`](https://ccs.how/faq/mode-by-strand.html)
+single-strand HiFi reads with
+[kinetics](https://ccs.how/faq/kinetics#what-about-single-strand-reads).
+
 ## Execution
 Running *jasmine* is as simple as:
 
     jasmine movie.hifi_reads.bam movie.5mc.hifi_reads.bam
 
 ## Output Data
-The output is adhering to the [SAM tag specification from 9. Dec 2021](https://samtools.github.io/hts-specs/SAMtags.pdf),
-using `MM` and `ML` tags. It's also described in the [PacBio BAM file formats](https://pacbiofileformats.readthedocs.io/en/latest/BAM.html#use-of-read-tags-for-per-read-base-base-modifications) as
+The output is adhering to the [SAM tag specification from 9. Dec
+2021](https://samtools.github.io/hts-specs/SAMtags.pdf), using `MM` and `ML`
+tags. It's also described in the [PacBio BAM file
+formats](https://pacbiofileformats.readthedocs.io/en/latest/BAM.html#use-of-read-tags-for-per-read-base-base-modifications)
+as
 
 | Tag  | Type  |           Description            |
 | ---- | ----- | -------------------------------- |
@@ -46,8 +55,9 @@ the discrete integers 0 to 255 inclusively. The probability range corresponding
 to an integer N is `N/256` to `(N + 1)/256`.
 
 ## Run Time
-*jasmine* scales nearly linear in the number of threads, achieving ~2 GBases HiFi per minute on
-16 cores. Memory footprint is very low with <100 MB per thread.
+*jasmine* scales nearly linear in the number of threads, achieving ~2 GBases
+HiFi per minute on 16 cores. Memory footprint is very low with <100 MB per
+thread.
 
     $ jasmine movie.hifi_reads.bam out.bam -j 16 --log-level INFO
     Reads      : 685700
@@ -58,13 +68,16 @@ to an integer N is `N/256` to `(N + 1)/256`.
     Peak RSS   : 1.096 GB
 
 ## Training datasets
-HiFi reads and subreads for true negative and true positive CpG methylation sites are available at https://downloads.pacbcloud.com/public/Sequel-II-CpG-training/.
+HiFi reads and subreads for true negative and true positive CpG methylation
+sites are available at
+https://downloads.pacbcloud.com/public/Sequel-II-CpG-training/.
 
-The true negatives are from HG002 Whole Genome Amplification (WGA).  The true positives are from HG002 WGA + CpG Methyltransferase (M.Sssl).
+The true negatives are from HG002 Whole Genome Amplification (WGA). The true
+positives are from HG002 WGA + CpG Methyltransferase (M.Sssl).
 
 
 ## Changelog
 
  * **2.0.0**
    * Initial release that supports Sequel II and Revio
-   * Support for single-strand consensus reads
+   * Support for [single-strand consensus reads](https://ccs.how/faq/mode-by-strand.html)
