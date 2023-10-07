@@ -4,7 +4,7 @@
 
 ***
 
-*Jasmine* predicts 5-Methylcytosine (5mC) of each CpG in PacBio HiFi reads,
+*Jasmine* predicts 5-Methylcytosine (5mC) of each CpG site in PacBio HiFi reads,
 using a Convolutional Neural Network. The *jasmine* model supports the Sequel II
 and Revio systems. Methylation is assumed to be symmetric between strands. The
 output is reported in the forward direction with respect to the HiFi read
@@ -39,10 +39,13 @@ Running *jasmine* is as simple as:
     jasmine movie.hifi_reads.bam movie.5mc.hifi_reads.bam
 
 ## Output Data
-The output is adhering to the [SAM tag specification from 9. Dec
-2021](https://samtools.github.io/hts-specs/SAMtags.pdf), using `MM` and `ML`
-tags. It's also described in the [PacBio BAM file
-formats](https://pacbiofileformats.readthedocs.io/en/latest/BAM.html#use-of-read-tags-for-per-read-base-base-modifications)
+The output methylation prediction for each annotated HiFi read is encoded in the `MM` and `ML` tags,
+defined in the [SAM tag specification](https://samtools.github.io/hts-specs/SAMtags.pdf).
+The `MM` tag specifies the modification (5mC from *jasmine*) and to which base it applies (every CpG for *jasmine*).
+The `ML` tag specifies the probability of methylation at each base.
+
+The output is also described in the [PacBio BAM file
+format documentation](https://pacbiofileformats.readthedocs.io/en/latest/BAM.html#use-of-read-tags-for-per-read-base-base-modifications)
 as
 
 | Tag  | Type  |           Description            |
@@ -53,6 +56,16 @@ as
 Notes for `ML`: The continuous probability range of 0.0 to 1.0 is remapped to
 the discrete integers 0 to 255 inclusively. The probability range corresponding
 to an integer N is `N/256` to `(N + 1)/256`.
+
+### Example
+```
+Read  AGTCTAGACTCCGTAATTACTCGCCTAG...
+C        1    2 34       5 6 78
+CpG              *         *
+
+MM:Z:C+m,3,1,...   # CpG sites are at C #4 (1+3) and #6 (1+3+1+1)
+ML:B:C,249,4,...   # probability of methylation at the first CpG is in [249/256,250/256); second CpG is in [4/256,5/256).
+```
 
 ## Run Time
 *jasmine* scales nearly linear in the number of threads, achieving ~2 GBases
