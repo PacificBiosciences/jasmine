@@ -1,6 +1,8 @@
-<img src="img/jasmine-logo.png" alt="jasmine logo" width="135px" align="right"/>
-<h1 align="center">Jasmine</h1>
-<p align="center">Call select base modifications in PacBio HiFi reads</p>
+<div align="center">
+    <img src="img/jasmine-logo.png" alt="jasmine logo" width="135px" align="center"/>
+    <h1>Jasmine</h1>
+    <p>Call select base modifications in PacBio HiFi reads</p>
+</div>
 
 ***
 
