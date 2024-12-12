@@ -6,11 +6,12 @@
 
 ***
 
-*Jasmine* calls select base modifications in PacBio HiFi reads based on polymerase
-kinetic signatures. Current models support 5-Methylcytosine (5mC) at CpG sites
-and N6-Methyladenine (6mA) for Fiber-seq.  The 5mC caller assumes symmetric methylation
-status at the CpG site, and reports methylation on the read forward strand. The 6mA
-caller is per-strand.
+`jasmine` identifies specific base modifications in PacBio HiFi reads by analyzing polymerase kinetic signatures.
+The current models support detecting 5-Methylcytosine (5mC) at CpG sites and N6-Methyladenine (6mA) in Fiber-seq data.
+For 5mC, the caller assumes that methylation is symmetric at the CpG site and reports methylation on the forward strand
+of the read. In contrast, the 6mA caller provides strand-specific results. The 6mA calls are compatible with Fiber-seq
+downstream analysis tools, such as [`fibertools`](https://github.com/fiberseq/fibertools-rs)
+([Jha 2024](https://doi.org/10.1101/gr.279095.124)).
 
 ## Availability
 Latest version can be installed via bioconda package `pbjasmine`.
@@ -60,14 +61,16 @@ MM:Z:C+m,3,1,...   # CpG sites are at C #4 (1+3) and #6 (1+3+1+1)
 ML:B:C,249,4,...   # probability of methylation at the first CpG is in [249/256,250/256); second CpG is in [4/256,5/256).
 ```
 
-## Training datasets
-HiFi reads and subreads for true negative and true positive CpG methylation
-sites are available at
-https://downloads.pacbcloud.com/public/Sequel-II-CpG-training/.
+## Model training
 
-The true negatives are from HG002 Whole Genome Amplification (WGA). The true
-positives are from HG002 WGA + CpG Methyltransferase (M.Sssl).
+The `jasmine` methylation models are trained using a supervised learning approach with curated positive and negative datasets.
 
+| Model | Positive datasets  | Negative datasets         |
+| ----- | ------------------ | -------------------------- |
+| 5mCpG | HG002 WGA + M.SssI | HG002 WGA                  |
+| 6mA   | HG002 Fiber-seq    | HG002 WGS, HG002 Fiber-seq |
+
+For the HG002 Fiber-seq training dataset, positive and negative labels were generated using [`fibertools predict-m6A`](https://github.com/fiberseq/fibertools-rs) ([Jha 2024](https://doi.org/10.1101/gr.279095.124)).
 
 ## Changelog
 
