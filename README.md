@@ -76,9 +76,9 @@ For the HG002 Fiber-seq training dataset, positive and negative labels were gene
 
  * **2.4.0**
    * Upcoming release
-   * Updated 5mC caller
+   * Updated 5mCpG caller, with new model design and input features
    * New 6mA caller
 
  * 2.0.0
-   * Initial release that supports Sequel II and Revio
+   * Initial release of jasmine 5mCpG model that supports Sequel II and Revio.
    * Support for [single-strand consensus reads](https://ccs.how/faq/mode-by-strand.html)
