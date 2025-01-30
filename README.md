@@ -73,9 +73,9 @@ The `jasmine` methylation models are trained using a supervised learning approac
 For the HG002 Fiber-seq training dataset, positive and negative labels were generated using [`fibertools predict-m6A`](https://github.com/fiberseq/fibertools-rs) ([Jha 2024](https://doi.org/10.1101/gr.279095.124)).
 
 ## Changelog
+ PacBio recommends the latest version (2.4.0) for all Sequel II and Revio datasets.  PacBio recommends against using older versions.
 
  * **2.4.0**
-   * Upcoming release
    * Updated 5mCpG caller, with new model design and input features
    * New 6mA caller
 
