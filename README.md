@@ -75,7 +75,10 @@ For the HG002 Fiber-seq training dataset, positive and negative labels were gene
 ## Changelog
  PacBio recommends the latest version (2.4.0) for all Sequel II and Revio datasets.  PacBio recommends against using older versions.
 
- * **2.4.0**
+ * **2.7.99**
+   * Fix by-strand 6mA calling
+
+ * 2.4.0
    * Updated 5mCpG caller, with new model design and input features
    * New 6mA caller
 
