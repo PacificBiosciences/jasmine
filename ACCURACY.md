@@ -1,5 +1,7 @@
 # Overview
 
+**THIS WILL BE UPDATED SOON**
+
 The HiFi methylation callers implemented in `jasmine` estimate the likelihood of DNA modifications at specific motifs. Currently, `jasmine` supports detection of 5mC at CpG motifs and 6mA at all A sites, specifically for Fiber-seq assays. Although the caller performance is strong, false positives (incorrectly detecting a modification) and false negatives (missing an actual modification) occur.
 
 When interpreting methylation calls, consider the known modifications in the sample to avoid mistaking false positives for true modifications or assuming false negatives mean the absence of a modification. For example:
@@ -10,9 +12,9 @@ When interpreting methylation calls, consider the known modifications in the sam
 
 The accuracy of `jasmine v2.4` callers for individual sites on individual reads in a typical library is summarized below.  `jasmine v2.4` is used in Revio `13.3` and Vega `1.0` instrument software.
 
-| Caller     | False positive rate (FPR) | False negative rate (FNR) | 
-| ---------- | ------------------------- | ------------------------- | 
-| 5mC at CpG | 7%                        |  7%                       | 
+| Caller     | False positive rate (FPR) | False negative rate (FNR) |
+| ---------- | ------------------------- | ------------------------- |
+| 5mC at CpG | 7%                        |  7%                       |
 | 6mA        | 0.6%                      |  10% (for Fiber-seq)      |
 
 
