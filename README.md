@@ -110,7 +110,7 @@ For the HG002 Fiber-seq training dataset, positive and negative labels were gene
 PacBio recommends the latest version for all Sequel II, Revio, and
 Vega datasets. PacBio recommends against using older versions.
 
- * **26.1.2**
+ * **26.1.3**
    * New 5-Hydroxymethylcytosine (5hmC) caller at CpG sites (strand-specific calls)
    * New models for SPRQ-Nx chemistry (R/P2-C3/5.0-25M)
    * 6mA calling enabled by default
