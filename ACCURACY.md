@@ -1,21 +1,20 @@
 # Overview
 
-**THIS WILL BE UPDATED SOON**
-
-The HiFi methylation callers implemented in `jasmine` estimate the likelihood of DNA modifications at specific motifs. Currently, `jasmine` supports detection of 5mC at CpG motifs and 6mA at all A sites, specifically for Fiber-seq assays. Although the caller performance is strong, false positives (incorrectly detecting a modification) and false negatives (missing an actual modification) occur.
+The HiFi methylation callers implemented in `jasmine` estimate the likelihood of DNA modifications at specific motifs. `jasmine v26.1` supports detection of 5mC and 5hmC at CpG motifs and 6mA at all A sites, specifically for Fiber-seq assays. Although the caller performance is strong, false positives (incorrectly detecting a modification) and false negatives (missing an actual modification) occur.
 
 When interpreting methylation calls, consider the known modifications in the sample to avoid mistaking false positives for true modifications or assuming false negatives mean the absence of a modification. For example:
-* *PCR-amplified DNA*: DNA from PCR lacks methylation marks. Any detected 5mC or 6mA in an amplicon library should be treated as false positives and evaluated against the known false positive rates of the `jasmine` callers.
+* *PCR-amplified DNA*: DNA from PCR lacks methylation marks. Any detected methylation in an amplicon library should be treated as false positives and evaluated against the known false positive rates of the `jasmine` callers.
 * *Human genomes*: Humans do not have functional 6mA methyltransferases and lack native 6mA methylation. Detected 6mA in human whole-genome samples should be treated as false positives unless otherwise justified.
 
 # Accuracy
 
-The accuracy of `jasmine v2.4` callers for individual sites on individual reads in a typical library is summarized below.  `jasmine v2.4` is used in Revio `13.3` and Vega `1.0` instrument software.
+The accuracy of `jasmine v26.1` callers for individual sites on individual reads in a typical library is summarized below.
 
-| Caller     | False positive rate (FPR) | False negative rate (FNR) |
-| ---------- | ------------------------- | ------------------------- |
-| 5mC at CpG | 7%                        |  7%                       |
-| 6mA        | 0.6%                      |  10% (for Fiber-seq)      |
+| Caller      | False positive rate (FPR) | False negative rate (FNR) |
+| ----------- | ------------------------- | ------------------------- |
+| 5mC at CpG  | 11%                       |  11%                      |
+| 5hmC at CpG | 0.9%                      |  20%                      |
+| 6mA         | 0.6%                      |  10% (for Fiber-seq)      |
 
 
 # Examples
