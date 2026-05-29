@@ -21,8 +21,9 @@ The accuracy of `jasmine v26.1` callers for individual sites on individual reads
 
 The Revio and Vega systems generate a *Methylation Summary* report for each SMRT Cell. This report provides the fraction of sites where each methylation caller predicts the presence of a modification (i.e., sites with an output probability >50%). Below are example reports and notes on how to interpret the results from three samples sequenced on the Revio system:
 
-| Sample                 | System     | Expected marks  | 5mC at CpG | 6mA  | Notes                                                         |
-| ---------------------- | ---------- | --------------- | ---------- | ---  | ------------------------------------------------------------- |
-| Human WGS              | Revio 13.3 | 5mC at CpG      | 59.7%      | 0.6% | 6mA call rate is at FPR; not evidence of 6mA in sample        |
-| Human Fiber-seq        | Revio 13.3 | 5mC at CpG, 6mA | 55.0%      | 9.7% | 6mA is well above FPR; good evidence of 6mA in sample         |
-| Kinnex full-length RNA | Revio 13.3 | -               | 6.7%       | 0.6% | 5mC and 6mA are at FPR; not evidence of methylation in sample |
+| Sample                 | System     | Expected marks  | 5mC at CpG | 5hmC at CpG | 6mA   | Notes                                                         |
+| ---------------------- | ---------- | --------------- | ---------- | ----------- | ----- | ------------------------------------------------------------- |
+| Human WGS              | Revio 13.5 | 5mC at CpG      | 60.0%      | 0.4%        | 0.4%  | 5hmC and 6mA call rates are at FPR; not evidence of 6mA or 5hmC in sample        |
+| Human Fiber-seq        | Revio 13.5 | 5mC at CpG, 6mA | 53.5%      | 0.5%        | 14.4% | 6mA and 5mC are well above FPR; good evidence of 5mC and 6mA in sample; 5hmC is at FPR         |
+| Kinnex full-length RNA | Revio 13.5 | -               | 13.5%      | 0.1%        | 0.4%  | All marks are at or near FPR; not evidence of methylation in sample |
+
